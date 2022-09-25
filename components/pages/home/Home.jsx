@@ -1,9 +1,12 @@
-import TopBar from './TopBar'
+import TopBar    from './TopBar'
+import Countries from './Countries'
 
-const Home = () => (
-  <div className='mt-q'>
-    <TopBar />
+const Home = (props) => {
+  return <div className='mt-q'>
+    <TopBar/>
+    <Countries serverList={props.countries} />
   </div>
-)
+}
+
 
 export default Home

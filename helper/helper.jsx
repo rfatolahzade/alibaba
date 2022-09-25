@@ -17,3 +17,12 @@ export function useOnClickOutside(ref, handler) {
     }
   }, [ref, handler])
 }
+
+export const isClientSideNavigate = (context) => {
+  return !!context.req.headers.referer && context.req.headers.referer.includes(context.req.headers.host)
+}
+
+export function commaSeparateNumber(x) {
+  if (!x) x = 0
+  return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')
+}

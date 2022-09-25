@@ -149,6 +149,14 @@ h1, h2, h3, h5, h6 {
   box-shadow: $shadow;
 }
 
+.text-left {
+  text-align: left;
+}
+
+.text-capitalize{
+  text-transform: capitalize;
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {
