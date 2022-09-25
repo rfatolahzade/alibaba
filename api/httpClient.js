@@ -31,7 +31,6 @@ request.interceptors.response.use(
   },
 )
 
-
 const httpService = ({
   url,
   body,

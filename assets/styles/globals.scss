@@ -157,6 +157,13 @@ h1, h2, h3, h5, h6 {
   text-transform: capitalize;
 }
 
+.text-ellipsis {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis " [..]";
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {

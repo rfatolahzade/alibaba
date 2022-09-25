@@ -7,10 +7,10 @@ export default Object.freeze({
       search: 'Search for a country...',
       filter_region: 'Filter by region',
     },
-    list : {
+    list: {
       population: 'population',
       capital: 'capital',
-      region: 'region'
-    }
+      region: 'region',
+    },
   },
 })

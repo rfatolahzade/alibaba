@@ -18,8 +18,11 @@ export function useOnClickOutside(ref, handler) {
   }, [ref, handler])
 }
 
-export const isClientSideNavigate = (context) => {
-  return !!context.req.headers.referer && context.req.headers.referer.includes(context.req.headers.host)
+export const isClientSideNavigate = context => {
+  return (
+    !!context.req.headers.referer &&
+    context.req.headers.referer.includes(context.req.headers.host)
+  )
 }
 
 export function commaSeparateNumber(x) {

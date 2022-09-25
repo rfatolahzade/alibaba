@@ -41,7 +41,7 @@ const SelectBox = ({ label, list, selected, handleChange, name, classes }) => {
           } position-absolute border-radius-4 right-0 left-0 w-100 mt-h bottom-0`}>
           {list.map(listItem => (
             <li
-              className='py-q cursor-pointer px-2'
+              className='py-q cursor-pointer px-2 text-capitalize'
               onClick={() => handleSelect(listItem)}
               key={listItem.toString()}>
               {listItem}
@@ -105,7 +105,7 @@ const StyledSelectBox = styled.div`
     overflow: hidden;
     &.select-box-list__open {
       padding: 10px 0;
-      height: calc(100% + 2rem);
+      height: fit-content;
     }
     @media (prefers-color-scheme: dark) {
       background-color: var(--blue-dark);

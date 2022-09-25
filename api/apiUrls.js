@@ -1,5 +1,5 @@
 export default {
   countries: {
-      _get: 'all',
-  }
+    _get: 'all',
+  },
 }
