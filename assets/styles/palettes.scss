@@ -1,0 +1,44 @@
+$palettes: (
+        blue: (
+                dark-500:hsl(207, 26%, 17%), //Very Dark Blue (Dark Mode Background)
+                dark-900: hsl(200, 15%, 8%), //Very Dark Blue (Light Mode Text)
+                dark: hsl(209, 23%, 22%), //Dark Blue (Dark Mode Elements)
+        ),
+        gray: (
+                light:hsl(0, 0%, 98%), // Very Light Gray (Light Mode Background)
+                dark: hsl(0, 0%, 52%) // Dark Gray (Light Mode Input)
+        ),
+        white: (
+                '':hsl(0, 0%, 100%) //White (Dark Mode Text & Light Mode Elements)
+        )
+);
+
+:root {
+  @each $colorname, $palette in $palettes {
+    @each $key, $value in $palette {
+      $keyname: "--" + $colorname;
+      @if ($key != '') {
+        $keyname: "--" + $colorname + "-" + $key;
+      }
+      #{$keyname}: #{$value};
+    }
+  }
+}
+
+@each $colorname, $palette in $palettes {
+  @each $key, $value in $palette {
+    $keyname: "-" + $colorname;
+    @if ($key != '') {
+      $keyname: "-" + $colorname + "-" + $key;
+    }
+    .text#{$keyname} {
+      color: #{$value};
+    }
+    .bg#{$keyname} {
+      background: #{$value};
+    }
+    .border#{$keyname} {
+      border-color: #{$value} !important;
+    }
+  }
+}
