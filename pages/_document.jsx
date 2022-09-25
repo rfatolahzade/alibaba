@@ -1,3 +1,4 @@
+import React from 'react'
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 export default class MyDocument extends Document {
@@ -11,10 +12,7 @@ export default class MyDocument extends Document {
             href='https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap'
             rel='stylesheet'
           />
-          <meta
-            name='viewport'
-            content='width=device-width, initial-scale=1.0'
-          />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0" />
           <title>Frontend challenge code | REST Countries API </title>
         </Head>
         <body>
