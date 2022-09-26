@@ -13,7 +13,7 @@ const Countries = ({ serverList }) => {
   })
   const router = useRouter()
 
-  const [list, onChangeList] = useState(serverList || [])
+  const [list, onChangeList] = useState( [])
   const [filterList, onChangeFilterList] = useState([])
   const getCountries = useCallback(() => {
     getCountriesService().then(res => onChangeList(res))
@@ -39,6 +39,10 @@ const Countries = ({ serverList }) => {
       onChangeQueryParams(router.query)
     }
   }, [router.query])
+
+  useEffect(()=>{
+    onChangeList(serverList || [])
+  },[])
 
   const handleSearch = useCallback(() => {
     const { search, region } = queryParams
