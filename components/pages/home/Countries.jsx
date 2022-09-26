@@ -26,7 +26,7 @@ const Countries = ({ serverList }) => {
     } else {
       onChangeList(serverList)
     }
-  }, [serverList])
+  }, [serverList,router.asPath])
 
   useEffect(() => {
     if (JSON.stringify(queryParams) !== JSON.stringify(router.query)) {
@@ -73,7 +73,7 @@ const Countries = ({ serverList }) => {
   return (
     <StyledCountries className={'d-grid'}>
       {(filterList.length === 0 && serverList.length === 0)
-        ? [...Array(10).keys()].map(item => (
+        ? [...Array(12).keys()].map(item => (
             <Skeleton
               height={390}
               width={270}

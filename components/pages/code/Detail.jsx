@@ -72,10 +72,16 @@ const Detail = ({ query_server,data_server }) => {
   }, [query_server?.code])
 
   useEffect(() => {
-    if ((!data && query_server?.code) || (data && router.query.code)) {
+    if ((!data_server && query_server?.code) || (data && router.query.code)) {
       getData()
     }
   }, [query_server?.code, router.query.code])
+
+  useEffect(()=>{
+    return () => {
+      onChangeData()
+    }
+  },[router.asPath])
 
   return (
     <>
@@ -97,18 +103,18 @@ const Detail = ({ query_server,data_server }) => {
               <div className={'detail--image'}>
                 {data.flag && (
                   <Image
-                    alt={data.name}
+                    alt={data?.name}
                     width={404}
                     height={303}
                     layout='responsive'
                     loading='lazy'
-                    src={data.flag}
+                    src={data?.flag}
                   />
                 )}
               </div>
 
               <summary className={'detail--summary my-4'}>
-                <h1 className='text-21 mb-3 font-weight-800'>{data.name}</h1>
+                <h1 className='text-21 mb-3 font-weight-800'>{data?.name}</h1>
                 <div className='detail--summary--list d-grid'>
                   <ul>
                     {schemaDetailLeft.map(schemaDetailLeftItem => (
