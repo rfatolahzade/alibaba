@@ -10,7 +10,7 @@ export async function getServerSideProps(context) {
   if (isClientSideNavigate(context))
     return {
       props: {
-        data_server: null,
+        data: null,
         query_server: context.query,
       },
     }
@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
   } catch (e) {
     return {
       props: {
-        data_server: null,
+        data: null,
         query_server: context.query,
       },
     }
