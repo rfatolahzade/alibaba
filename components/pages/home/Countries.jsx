@@ -80,7 +80,7 @@ const Countries = ({ serverList }) => {
               key={item}
             />
           ))
-        : [filterList.length === 0 ? serverList : filterList].map(listItem => (
+        : (filterList.length === 0 ? serverList : filterList).map(listItem => (
             <CardCountry
               key={listItem.name}
               data={listItem}
