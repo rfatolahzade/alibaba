@@ -53,7 +53,7 @@ const Countries = ({ serverList }) => {
             } else if (search) {
               return listItem.name?.toLowerCase().includes(search?.toLowerCase())
             } else {
-              return listItem.region
+              return listItem?.region
                 .toLowerCase()
                 .includes(region?.toLowerCase())
             }
