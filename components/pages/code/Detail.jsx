@@ -86,7 +86,7 @@ const Detail = ({ query_server,data_server }) => {
   return (
     <>
       <Head>
-        <title>{data.name}</title>
+        <title>{data?.name}</title>
       </Head>
       <StyleDetail className={'d-flex flex-column'}>
         <nav>

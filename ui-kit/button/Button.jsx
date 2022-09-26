@@ -22,7 +22,7 @@ const Button = ({ title, icon, href, size, classes }) => (
       size === 'small' ? 'py-1 px-3' : 'py-1 px-4'
     }  ${classes}`}>
     {href ? (
-      <Link href={href}>
+      <Link href={href} shallow={false}>
         <a href={href}>
           <MainButton
             icon={icon}
