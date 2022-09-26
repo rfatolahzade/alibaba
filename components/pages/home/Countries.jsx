@@ -1,21 +1,23 @@
-import { useCallback, useEffect, useState } from 'react'
-import { getCountriesService } from 'api/services/country'
-import CardCountry from './CardCountry'
-import styled from 'styled-components'
-import { breakpointsPX } from 'helper/consts'
-import { useRouter } from 'next/router'
+import {useCallback, useEffect, useState} from 'react'
+import {getCountriesService}              from 'api/services/country'
+import CardCountry                        from './CardCountry'
+import styled                             from 'styled-components'
+import {breakpointsPX}                    from 'helper/consts'
+import {useRouter}                        from 'next/router'
+import Skeleton                           from 'ui-kit/skeleton/Skeleton'
 
-const Countries = ({ serverList }) => {
+const Countries = ({serverList}) => {
   const [queryParams, onChangeQueryParams] = useState({
     search: '',
-    region: '',
+    region: ''
   })
   const router = useRouter()
 
   const [list, onChangeList] = useState([])
   const [filterList, onChangeFilterList] = useState([])
   const getCountries = useCallback(() => {
-    getCountriesService().then(res => onChangeList(res))
+    getCountriesService()
+      .then(res => onChangeList(res))
   }, [router.asPath])
 
   useEffect(() => {
@@ -39,24 +41,27 @@ const Countries = ({ serverList }) => {
   }, [router.query])
 
   const handleSearch = useCallback(() => {
-    const { search, region } = queryParams
+    const {search, region} = queryParams
     const newFilterList =
       search || region
-        ? list.filter(listItem => {
-            if (region && search) {
-              return (
-                listItem.name.toLowerCase().includes(search.toLowerCase()) &&
-                listItem.region.toLowerCase().includes(region.toLowerCase())
-              )
-            } else if (search) {
-              return listItem.name.toLowerCase().includes(search.toLowerCase())
-            } else {
-              return listItem.region
-                .toLowerCase()
-                .includes(region.toLowerCase())
-            }
-          })
-        : list
+      ? list.filter(listItem => {
+        if (region && search) {
+          return (
+            listItem.name.toLowerCase()
+              .includes(search.toLowerCase()) &&
+            listItem.region.toLowerCase()
+              .includes(region.toLowerCase())
+          )
+        } else if (search) {
+          return listItem.name.toLowerCase()
+            .includes(search.toLowerCase())
+        } else {
+          return listItem.region
+            .toLowerCase()
+            .includes(region.toLowerCase())
+        }
+      })
+      : list
     onChangeFilterList(newFilterList)
   }, [queryParams, list])
 
@@ -66,18 +71,25 @@ const Countries = ({ serverList }) => {
 
   return (
     <StyledCountries>
-      {filterList.map(listItem => (
-        <CardCountry
-          key={listItem.name}
-          data={listItem}
-        />
-      ))}
+      {
+        list.length === 0 ?
+        [...Array(10).keys()]
+          .map(item => <Skeleton height={390} width={270} key={item}/>)
+                          :
+        filterList.map(listItem => (
+          <CardCountry
+            key={listItem.name}
+            data={listItem}
+          />
+        ))
+      }
+
     </StyledCountries>
   )
 }
 
 Countries.defaultProps = {
-  serverList: [],
+  serverList: []
 }
 
 export default Countries
