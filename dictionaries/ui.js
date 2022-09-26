@@ -13,4 +13,18 @@ export default Object.freeze({
       region: 'region',
     },
   },
+  detail: {
+    back: 'back',
+    summary: {
+      population: 'population',
+      top_level_down: 'top level down',
+      currencies: 'currencies',
+      languages: 'languages',
+      capital: 'capital',
+      region: 'region',
+      sub_region: 'sub region',
+      native_name: 'native name',
+      border_countries: 'border countries',
+    },
+  },
 })

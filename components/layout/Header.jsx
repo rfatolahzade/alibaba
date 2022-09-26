@@ -4,10 +4,10 @@ import ui from 'dictionaries/ui'
 import styled from 'styled-components'
 
 const Header = () => (
-  <StyledHeader className='py-2'>
+  <StyledHeader className='py-1'>
     <div className='container'>
       <div className='d-flex justify-between'>
-        <h1 className='text-21 font-weight-800'>{ui.header.title}</h1>
+        <h4 className='text-21 font-weight-800'>{ui.header.title}</h4>
         <div className='d-flex justify-between items-center cursor-pointer'>
           <Icon type='moon' />
           <h6 className='ml-1 text-14 font-weight-600'>Dark mode</h6>

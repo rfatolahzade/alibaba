@@ -35,10 +35,11 @@ const httpService = ({
   url,
   body,
   params = {},
+  endPoint = '',
   method = 'GET',
   version = 'v1',
 }) => {
-  const mainUrl = `${version}/${url}`
+  const mainUrl = `${version}/${url}${endPoint}`
   return request({
     url: mainUrl,
     method,

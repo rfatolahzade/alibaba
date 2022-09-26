@@ -34,13 +34,13 @@ a {
 }
 
 
-ul,li {
+ul, li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-h1, h2, h3, h5, h6 {
+h1, h2, h3, h4, h5, h6 {
   margin: 0;
 }
 
@@ -83,7 +83,7 @@ h1, h2, h3, h5, h6 {
   align-items: center;
 }
 
-.flex-column{
+.flex-column {
   flex-direction: column;
 }
 
@@ -153,7 +153,7 @@ h1, h2, h3, h5, h6 {
   text-align: left;
 }
 
-.text-capitalize{
+.text-capitalize {
   text-transform: capitalize;
 }
 
