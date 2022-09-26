@@ -10,7 +10,7 @@ export async function getServerSideProps(context) {
   if (isClientSideNavigate(context))
     return {
       props: {
-        data: null,
+        data_server: null,
         query_server: context.query,
       },
     }
@@ -19,14 +19,14 @@ export async function getServerSideProps(context) {
       context.query.code && (await getCountryService(context.query.code))
     return {
       props: {
-        data: result,
+        data_server: result,
         query_server: context.query,
       },
     }
   } catch (e) {
     return {
       props: {
-        data: null,
+        data_server: null,
         query_server: context.query,
       },
     }
