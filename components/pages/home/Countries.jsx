@@ -13,7 +13,7 @@ const Countries = ({ serverList }) => {
   })
   const router = useRouter()
 
-  const [list, onChangeList] = useState([])
+  const [list, onChangeList] = useState(serverList)
   const [filterList, onChangeFilterList] = useState([])
   const getCountries = useCallback(() => {
     getCountriesService().then(res => onChangeList(res))

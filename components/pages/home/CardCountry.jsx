@@ -78,7 +78,8 @@ const StyledCardCountry = styled.article`
   color: var(--color-primary);
 
   .card-country--image {
-    object-fit: cover;
+    object-fit: scale-down;
+    object-position: center;
     aspect-ratio: 4/3;
     border-radius: 4px 4px 0 0;
   }
