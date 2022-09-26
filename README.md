@@ -1,34 +1,130 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+# Alibaba task
 
-First, run the development server:
+Countries list and detail Country implementation
+
+
+
+## Installation
+
+Install project with npm or yarn
 
 ```bash
-npm run dev
-# or
-yarn dev
+  yarn dev
+  #or
+  npm run dev
+```
+    
+## Environment Variables
+
+To run this project, you will need to add the following environment variables to your .env file
+
+`NODE_PATH` 
+./
+
+`NEXT_PUBLIC_BUILD_ENV` 
+'development'
+
+`NEXT_PUBLIC_REACT_APP_BASE_URL_API` 
+'https://restcountries.com/'
+
+
+## Tech Stack
+
+**Client:** React, Redux, Scss, Styled Components,Nextjs, Axios
+
+
+
+
+## Usage/Examples
+
+1-Add new icon
+
+-Your new icon upload https://icomoon.io/ 
+
+
+-Use the font icon in the path 'assets/fonts/icomoon' 
+
+-Add new icon in file 'ui-kit/icons/icon'
+```javascript
+  [name-icon]: <span className={`${iconPretext}[name-icon]`} />,
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2-Change color dark mode
+'assets/styles/globals.scss' 
+```css
+[data-theme="dark"] {
+  --color-primary: var(--white);
+  --color-background:var(--blue-dark-500);
+  --color-background-secondary: var(--blue-dark);
+}
+```
 
-You can start editing the page by modifying `pages/index.jsx`. The page auto-updates as you edit the file.
+3-Use card country
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+```javascript
+<CardCountry data={listItem}/>
+```
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+4-Use palettes color 
 
-## Learn More
+```css
+$palettes: (
+        [color-name]: (
+                100:#FAFAFA, 
+                200: #FCFCFC, 
+                '': #FFFFFF,
+        )
+);
 
-To learn more about Next.js, take a look at the following resources:
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```javascript 
+<h4 className='text-[color-name]-[color-code]'></h4>
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
 
-## Deploy on Vercel
+## API Reference
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+#### Get all countries
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```http
+  GET v2/all
+```
+
+
+#### Get detail country by code
+
+```http
+  GET v2/alpha/${alpha3Code} 
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `alpha3Code`      | `number` | **Required**. Alpha3Code of item to fetch |
+
+
+
+## Deployment
+
+To deploy this project run
+
+```bash
+  npm run build
+  #or
+  yarn build
+```
+
+After finish build 
+
+```bash
+  npm run start
+  #or
+  yarn start
+```
+
+
+## Feedback
+
+If you have any feedback, please reach out to us at mohsen.noury@gmail.com
+
