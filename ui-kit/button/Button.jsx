@@ -4,8 +4,8 @@ import PropTypes from 'prop-types'
 import Icon from '../icons/Icon'
 import Link from 'next/link'
 
-const MainButton = ({ icon, title }) => (
-  <div className='d-flex items-center'>
+const MainButton = ({ icon, title ,classes}) => (
+  <div className={`d-flex items-center ${classes}`}>
     {icon && (
       <Icon
         type={icon}
@@ -18,13 +18,12 @@ const MainButton = ({ icon, title }) => (
 
 const Button = ({ title, icon, href, size, classes }) => (
   <StyledButton
-    className={`box-shadow border-radius-4 cursor-pointer text-14 font-weight-300 text-capitalize ${
-      size === 'small' ? 'py-1 px-3' : 'py-1 px-4'
-    }  ${classes}`}>
+    className={`box-shadow border-radius-4 cursor-pointer text-14 font-weight-300 text-capitalize   ${classes}`}>
     {href ? (
       <Link href={href} shallow={false}>
-        <a href={href}>
+        <a href={href} >
           <MainButton
+            classes={`${size === 'small' ? 'py-1 px-3' : 'py-1 px-4'}`}
             icon={icon}
             title={title}
           />
