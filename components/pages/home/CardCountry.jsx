@@ -28,8 +28,8 @@ const schemaCard = [
 
 const CardCountry = ({ data }) => (
   <StyledCardCountry className='border-radius-4 box-shadow d-flex flex-column'>
-    <Link href={`/country/${data.alpha3Code.toLowerCase()}`}>
-      <a href={`/country/${data.alpha3Code.toLowerCase()}`}>
+    <Link href={`/country/${data.alpha3Code?.toLowerCase()}`}>
+      <a href={`/country/${data.alpha3Code?.toLowerCase()}`}>
         <Image
           className='card-country--image w-100 h-100'
           alt={data.name}
