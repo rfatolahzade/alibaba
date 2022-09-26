@@ -64,8 +64,8 @@ const schemaDetailRight = [
   },
 ]
 
-const Detail = ({ query_server,data_server }) => {
-  const [data, onChangeData] = useState(data_server)
+const Detail = ({ query_server}) => {
+  const [data, onChangeData] = useState('')
   const router = useRouter()
   const getData = useCallback(() => {
     getCountryService(query_server.code).then(res => onChangeData(res))
@@ -80,7 +80,7 @@ const Detail = ({ query_server,data_server }) => {
   return (
     <>
       <Head>
-        <title>{[data || data_server].name}</title>
+        <title>{data.name}</title>
       </Head>
       <StyleDetail className={'d-flex flex-column'}>
         <nav>
@@ -97,18 +97,18 @@ const Detail = ({ query_server,data_server }) => {
               <div className={'detail--image'}>
                 {data.flag && (
                   <Image
-                    alt={[data || data_server].name}
+                    alt={data.name}
                     width={404}
                     height={303}
                     layout='responsive'
                     loading='lazy'
-                    src={[data || data_server].flag}
+                    src={data.flag}
                   />
                 )}
               </div>
 
               <summary className={'detail--summary my-4'}>
-                <h1 className='text-21 mb-3 font-weight-800'>{[data || data_server].name}</h1>
+                <h1 className='text-21 mb-3 font-weight-800'>{data.name}</h1>
                 <div className='detail--summary--list d-grid'>
                   <ul>
                     {schemaDetailLeft.map(schemaDetailLeftItem => (
@@ -129,15 +129,15 @@ const Detail = ({ query_server,data_server }) => {
                     ))}
                   </ul>
                 </div>
-                {[data || data_server]?.borders && (
+                {data?.borders && (
                   <div className='detail--summary--borders d-grid'>
                     <h6 className='text-16 font-weight-600 text-capitalize mt-1 detail--summary--borders--title'>
                       {ui.detail.summary.border_countries}:
                     </h6>
                     <div className='detail--summary--borders--list'>
-                      {[data || data_server]?.borders?.map(borderItem => (
+                      {data?.borders?.map(borderItem => (
                         <Button
-                          href={`/country/${borderItem?.toLowerCase()}`}
+                          href={`/country/${borderItem.toLowerCase()}`}
                           key={borderItem}
                           size={'small'}
                           classes={'m-q'}
