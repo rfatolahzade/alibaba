@@ -71,6 +71,7 @@ const StyledInput = styled.div`
     outline: none;
     background: none;
     font-weight: var(--font-weight-600);
+    color: var(--color-secondary);
     @media (max-width: ${breakpointsPX.mobile}) {
       width: 100%;
     }
@@ -84,6 +85,7 @@ const StyledInput = styled.div`
   }
 
   input::placeholder {
+    color: var(--color-secondary);
     font-weight: var(--font-weight-300);
   }
 
@@ -91,9 +93,5 @@ const StyledInput = styled.div`
   background-color: var(--color-background-secondary);
   color: var(--color-secondary);
   font-weight: var(--font-weight-600);
-
-  input::placeholder {
-    font-weight: var(--font-weight-300);
-    color: var(--color-secondary);
-  }
+  
 `
