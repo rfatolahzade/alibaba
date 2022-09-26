@@ -6,11 +6,11 @@ const Code = props => <Detail {...props} />
 
 export default Code
 
-export async function getServerSideProps(context) {
+export async function getStaticProps(context) {
   if (isClientSideNavigate(context))
     return {
       props: {
-        data: null,
+        data_server: null,
         query_server: context.query,
       },
     }
@@ -26,7 +26,7 @@ export async function getServerSideProps(context) {
   } catch (e) {
     return {
       props: {
-        data: null,
+        data_server: null,
         query_server: context.query,
       },
     }
