@@ -69,6 +69,11 @@ h1, h2, h3, h4, h5, h6 {
     max-width: $breakpoints-mobile;
     padding: 0 1rem;
   }
+
+  @media (min-width: $breakpoints-mobile) and (max-width: $breakpoints-tablet){
+    max-width: $breakpoints-tablet;
+    padding: 0 1.5rem;
+  }
 }
 
 .w-100 {

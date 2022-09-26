@@ -274,7 +274,7 @@ const StyleDetail = styled.section`
     }
   }
 
-  @media (max-width: ${breakpointsPX.mobile}) {
+  @media (max-width: ${breakpointsPX.tablet}) {
     margin-top: 3rem;
 
     .detail {

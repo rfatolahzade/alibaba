@@ -101,7 +101,13 @@ const StyledCountries = styled.div`
   row-gap: 75px;
   grid-template-columns: repeat(4, 1fr);
 
-  @media (max-width: ${breakpointsPX.mobile}) {
+  @media ( max-width: ${breakpointsPX.tablet}) and ( min-width: ${breakpointsPX.mobile}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  @media ( max-width: ${breakpointsPX.mobile}) {
     grid-template-columns: repeat(1, 1fr);
   }
+
+
 `

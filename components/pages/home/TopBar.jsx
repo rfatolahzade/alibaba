@@ -71,7 +71,7 @@ const areEqual = (prevProps, nextProps) =>
 export default memo(withRouter(TopBar), areEqual)
 
 const StyledTopBar = styled.div`
-  @media (max-width: ${breakpointsPX.mobile}) {
+  @media (max-width: ${breakpointsPX.tablet}) {
     flex-direction: column;
     .top-bar--select-box {
       margin-top: 2.5rem;
