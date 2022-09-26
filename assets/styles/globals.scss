@@ -10,12 +10,14 @@
   --font-weight-800: #{$font-weight-800};
   --shadow: #{$shadow};
   --color-primary: var(--dark-900);
+  --color-secondary: var(--gray-dark);
   --color-background: var(--gray-light);
   --color-background-secondary: var(--white);
 }
 
 [data-theme="dark"] {
   --color-primary: var(--white);
+  --color-secondary: var(--white);
   --color-background:var(--blue-dark-500);
   --color-background-secondary: var(--blue-dark);
 }

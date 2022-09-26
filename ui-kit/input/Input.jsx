@@ -86,9 +86,11 @@ const StyledInput = styled.div`
 
   transition: background-color 0.4s;
   background-color: var(--color-background-secondary);
-  color: var(--color-primary);
+  color: var(--color-secondary);
+  font-weight: var(--font-weight-600);
 
   input::placeholder {
-    color: var(--color-primary);
+    font-weight: var(--font-weight-300);
+    color: var(--color-secondary);
   }
 `
