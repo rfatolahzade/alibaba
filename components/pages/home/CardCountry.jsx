@@ -1,8 +1,9 @@
-import styled from 'styled-components'
-import Image from 'next/image'
-import ui from 'dictionaries/ui'
+import {memo}                  from 'react'
+import styled                  from 'styled-components'
+import Link                    from 'next/link'
+import Image                   from 'next/image'
+import ui                      from 'dictionaries/ui'
 import { commaSeparateNumber } from 'helper/helper'
-import Link from 'next/link'
 
 const schemaCard = [
   {
@@ -64,7 +65,10 @@ const CardCountry = ({ data }) => (
   </StyledCardCountry>
 )
 
-export default CardCountry
+const areEqual = (prevProps, nextProps) => JSON.stringify(prevProps.data) ===
+  JSON.stringify(nextProps.data)
+
+export default memo(CardCountry,areEqual)
 
 const StyledCardCountry = styled.article`
   text-align: center;

@@ -1,18 +1,18 @@
-import { useCallback, useEffect, useRef, useState } from 'react'
-import PropTypes from 'prop-types'
-import Icon from '../icons/Icon'
-import styled from 'styled-components'
-import { breakpointsPX } from 'helper/consts'
+import {memo, useCallback, useEffect, useRef, useState} from 'react'
+import PropTypes                                        from 'prop-types'
+import Icon                                             from '../icons/Icon'
+import styled                                           from 'styled-components'
+import {breakpointsPX}                                  from 'helper/consts'
 
-const Input = ({ icon, placeholder, handleChange, name, value }) => {
+const Input = ({icon, placeholder, handleChange, name, value}) => {
   const [stateValue, onChangeStateValue] = useState(value)
   const refInput = useRef()
 
   const onFocus = useCallback(() => refInput?.current.focus(), [refInput])
 
   const onChange = useCallback(e => {
-    handleChange({ value: e.target.value, name })
-  }, [])
+    handleChange({value: e.target.value, name})
+  }, [name])
 
   useEffect(() => {
     onChangeStateValue(value)
@@ -46,7 +46,7 @@ Input.defaultProps = {
   placeholder: '',
   name: '',
   value: '',
-  handleChange: () => {},
+  handleChange: () => {}
 }
 
 Input.propTypes = {
@@ -54,10 +54,12 @@ Input.propTypes = {
   placeholder: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired || PropTypes.number.isRequired,
-  handleChange: PropTypes.func.isRequired,
+  handleChange: PropTypes.func.isRequired
 }
 
-export default Input
+const areEqual = (prevProps, nextProps) => prevProps.value === nextProps.value
+
+export default memo(Input, areEqual)
 
 const StyledInput = styled.div`
   input {

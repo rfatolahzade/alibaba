@@ -1,10 +1,10 @@
-import styled from 'styled-components'
-import PropTypes from 'prop-types'
-import Icon from '../icons/Icon'
-import { useCallback, useRef, useState } from 'react'
-import { useOnClickOutside } from 'helper/helper'
+import styled                                from 'styled-components'
+import PropTypes                             from 'prop-types'
+import Icon                                  from '../icons/Icon'
+import {memo, useCallback, useRef, useState} from 'react'
+import {useOnClickOutside}                   from 'helper/helper'
 
-const SelectBox = ({ label, list, selected, handleChange, name, classes }) => {
+const SelectBox = ({label, list, selected, handleChange, name, classes}) => {
   const [isOpen, onToggleIsOpen] = useState()
   const ref = useRef()
 
@@ -15,7 +15,7 @@ const SelectBox = ({ label, list, selected, handleChange, name, classes }) => {
   }, [isOpen])
 
   const handleSelect = useCallback(selected => {
-    handleChange({ value: selected, name })
+    handleChange({value: selected, name})
     onToggleIsOpen(false)
   }, [])
 
@@ -59,7 +59,7 @@ SelectBox.defaultProps = {
   selected: '',
   handleChange: () => {},
   list: '',
-  classes: '',
+  classes: ''
 }
 
 SelectBox.propTypes = {
@@ -68,10 +68,13 @@ SelectBox.propTypes = {
   selected: PropTypes.string.isRequired || PropTypes.number.isRequired,
   list: PropTypes.array.isRequired,
   handleChange: PropTypes.func.isRequired,
-  classes: PropTypes.string,
+  classes: PropTypes.string
 }
 
-export default SelectBox
+const areEqual = (prevProps, nextProps) => prevProps.selected === nextProps.selected &&
+  prevProps.list === nextProps.list
+
+export default memo(SelectBox, areEqual)
 
 const StyledSelectBox = styled.div`
   transition: background-color 0.4s;
@@ -84,6 +87,7 @@ const StyledSelectBox = styled.div`
 
   .select-box--icon {
     transition: transform 0.5s;
+
     &.select-box--icon__up {
       transform: rotate(180deg);
     }
@@ -96,10 +100,12 @@ const StyledSelectBox = styled.div`
     transition: all 0.5s;
     padding: 0;
     overflow: hidden;
+
     &.select-box-list__open {
       padding: 10px 0;
       height: fit-content;
     }
+
     transition: background-color 0.4s;
     background-color: var(--color-background-secondary);
     color: var(--color-primary);

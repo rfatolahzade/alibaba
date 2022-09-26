@@ -6,8 +6,8 @@
  * @param {string} className - The desired class Name for icons.
  * @returns {object} An Icon set.
  */
-import { cloneElement } from 'react'
-import PropTypes from 'prop-types'
+import {cloneElement, memo} from 'react'
+import PropTypes            from 'prop-types'
 
 const iconPretext = 'icon-'
 const IconWrapper = {
@@ -33,7 +33,10 @@ const Icon = ({ type, ...props }) => {
   }
   return cloneElement(result, finalProps)
 }
-export default Icon
+
+const areEqual = (prevProps, nextProps) =>   prevProps.type ===
+ nextProps.type
+export default memo(Icon,areEqual)
 Icon.propType = {
   type: PropTypes.oneOf(Object.keys(IconWrapper)).isRequired,
 }
