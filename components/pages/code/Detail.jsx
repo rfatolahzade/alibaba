@@ -92,7 +92,7 @@ const Detail = ({ query_server,data_server }) => {
         </nav>
 
         <detail className={'detail d-grid'}>
-          {data ? (
+          {data || data_server ? (
             <>
               <div className={'detail--image'}>
                 {data.flag && (
