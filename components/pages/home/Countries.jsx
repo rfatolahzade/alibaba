@@ -1,6 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
 import { getCountriesService } from 'api/services/country'
-import CardCountry from './CardCountry'
 import styled from 'styled-components'
 import { breakpointsPX } from 'helper/consts'
 import { useRouter } from 'next/router'
@@ -19,7 +18,6 @@ const Countries = ({ serverList }) => {
     getCountriesService().then(res => onChangeList(res))
   }, [router.asPath])
 
-  console.log('serverList',serverList)
 
   useEffect(() => {
     if (serverList.length === 0) {
@@ -69,7 +67,7 @@ const Countries = ({ serverList }) => {
 
   return (
     <StyledCountries className={'d-grid'}>
-      {list.length === 0
+      {(list.length === 0 || serverList.length === 0)
         ? [...Array(10).keys()].map(item => (
             <Skeleton
               height={390}
@@ -77,7 +75,7 @@ const Countries = ({ serverList }) => {
               key={item}
             />
           ))
-        : filterList.map(listItem => (
+        : [filterList.length === 0 ? serverList : filterList].map(listItem => (
             <CardCountry
               key={listItem.name}
               data={listItem}
