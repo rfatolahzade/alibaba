@@ -1,6 +1,9 @@
+
 # Alibaba task
 
 Countries list and detail Country implementation
+
+
 
 ## Installation
 
@@ -11,45 +14,48 @@ Install project with npm or yarn
   #or
   npm run dev
 ```
-
+    
 ## Environment Variables
 
 To run this project, you will need to add the following environment variables to your .env file
 
-`NODE_PATH`
+`NODE_PATH` 
 ./
 
-`NEXT_PUBLIC_BUILD_ENV`
+`NEXT_PUBLIC_BUILD_ENV` 
 'development'
 
-`NEXT_PUBLIC_REACT_APP_BASE_URL_API`
+`NEXT_PUBLIC_REACT_APP_BASE_URL_API` 
 'https://restcountries.com/'
+
 
 ## Tech Stack
 
 **Client:** React, Redux, Scss, Styled Components,Nextjs, Axios
 
+
+
+
 ## Usage/Examples
 
 1-Add new icon
 
--Your new icon upload https://icomoon.io/
+-Your new icon upload https://icomoon.io/ 
 
--Use the font icon in the path 'assets/fonts/icomoon'
+
+-Use the font icon in the path 'assets/fonts/icomoon' 
 
 -Add new icon in file 'ui-kit/icons/icon'
-
 ```javascript
   [name-icon]: <span className={`${iconPretext}[name-icon]`} />,
 ```
 
 2-Change color dark mode
-'assets/styles/globals.scss'
-
+'assets/styles/globals.scss' 
 ```css
-[data-theme='dark'] {
+[data-theme="dark"] {
   --color-primary: var(--white);
-  --color-background: var(--blue-dark-500);
+  --color-background:var(--blue-dark-500);
   --color-background-secondary: var(--blue-dark);
 }
 ```
@@ -57,23 +63,31 @@ To run this project, you will need to add the following environment variables to
 3-Use card country
 
 ```javascript
-<CardCountry data={listItem} />
+<CardCountry data={listItem}/>
 ```
 
-4-Use palettes color
+4-Use palettes color 
 
 ```css
 $palettes: (
-  [color-name]: (
-    100: #fafafa,
-    200: #fcfcfc,
-    '': #ffffff
-  )
+        [color-name]: (
+                100:#FAFAFA, 
+                200: #FCFCFC, 
+                '': #FFFFFF,
+        )
 );
+
 ```
 
-```javascript
+```javascript 
 <h4 className='text-[color-name]-[color-code]'></h4>
+```
+5-Prettier code formatter
+
+```command
+ yarn  format 
+ #or
+ npm run format
 ```
 
 ## API Reference
@@ -84,15 +98,18 @@ $palettes: (
   GET v2/all
 ```
 
+
 #### Get detail country by code
 
 ```http
-  GET v2/alpha/${alpha3Code}
+  GET v2/alpha/${alpha3Code} 
 ```
 
-| Parameter    | Type     | Description                               |
-| :----------- | :------- | :---------------------------------------- |
-| `alpha3Code` | `number` | **Required**. Alpha3Code of item to fetch |
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `alpha3Code`      | `number` | **Required**. Alpha3Code of item to fetch |
+
+
 
 ## Deployment
 
@@ -104,7 +121,7 @@ To deploy this project run
   yarn build
 ```
 
-After finish build
+After finish build 
 
 ```bash
   npm run start
@@ -112,6 +129,8 @@ After finish build
   yarn start
 ```
 
+
 ## Feedback
 
 If you have any feedback, please reach out to us at mohsen.noury@gmail.com
+
