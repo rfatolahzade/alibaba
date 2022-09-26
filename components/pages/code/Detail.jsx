@@ -8,6 +8,7 @@ import Head from 'next/head'
 import { commaSeparateNumber } from 'helper/helper'
 import { breakpointsPX } from 'helper/consts'
 import Skeleton from 'ui-kit/skeleton/Skeleton'
+import { useRouter } from 'next/router'
 
 const schemaDetailLeft = [
   {
@@ -65,16 +66,16 @@ const schemaDetailRight = [
 
 const Detail = ({ query_server }) => {
   const [data, onChangeData] = useState('')
-
+  const router = useRouter()
   const getData = useCallback(() => {
     getCountryService(query_server.code).then(res => onChangeData(res))
   }, [query_server?.code])
 
   useEffect(() => {
-    if (!data && query_server?.code) {
+    if ((!data && query_server?.code) || (data && router.query.code)) {
       getData()
     }
-  }, [query_server?.code])
+  }, [query_server?.code, router.query.code])
 
   return (
     <>
@@ -136,6 +137,7 @@ const Detail = ({ query_server }) => {
                     <div className='detail--summary--borders--list'>
                       {data?.borders?.map(borderItem => (
                         <Button
+                          href={`/country/${borderItem.toLowerCase()}`}
                           key={borderItem}
                           size={'small'}
                           classes={'m-q'}

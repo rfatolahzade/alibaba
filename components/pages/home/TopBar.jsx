@@ -6,7 +6,7 @@ import styled from 'styled-components'
 import { breakpointsPX } from 'helper/consts'
 import { useRouter, withRouter } from 'next/router'
 
-const Regions = ['africa', 'america', 'asia', 'europe', 'oceania']
+const Regions = ['all', 'africa', 'america', 'asia', 'europe', 'oceania']
 
 const TopBar = () => {
   const router = useRouter()
@@ -23,7 +23,11 @@ const TopBar = () => {
 
   const handleChange = useCallback(
     e => {
-      onChangeQueryParams(prevState => ({ ...prevState, [e.name]: e.value }))
+      let value = e.value
+      if (e.value === 'all') {
+        value = ''
+      }
+      onChangeQueryParams(prevState => ({ ...prevState, [e.name]: value }))
     },
     [queryParams],
   )
@@ -52,7 +56,7 @@ const TopBar = () => {
       <SelectBox
         label={ui.home.top_bar.filter_region}
         name={'region'}
-        list={Regions}
+        list={Regions.filter(region => region !== 'all' || queryParams.region)}
         classes='top-bar--select-box'
         selected={queryParams.region || ''}
         handleChange={handleChange}

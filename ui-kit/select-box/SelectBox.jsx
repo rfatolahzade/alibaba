@@ -26,7 +26,7 @@ const SelectBox = ({ label, list, selected, handleChange, name, classes }) => {
       <div
         onClick={handleOpen}
         className='d-flex cursor-pointer justify-between items-center'>
-        <span className='mr-1 select-box--label'>
+        <span className='mr-1 select-box--label text-capitalize'>
           {selected ? selected : label}
         </span>
         <Icon
