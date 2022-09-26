@@ -72,7 +72,7 @@ const Countries = ({ serverList }) => {
 
   return (
     <StyledCountries className={'d-grid'}>
-      {(filterList.length === 0 || serverList.length === 0)
+      {(filterList.length === 0 && serverList.length === 0)
         ? [...Array(10).keys()].map(item => (
             <Skeleton
               height={390}
