@@ -4,14 +4,6 @@ const nextConfig = {
   swcMinify: true,
   images: {
     domains: ['upload.wikimedia.org', 'flagcdn.com']
-  },
-  async rewrites () {
-    return [
-      {
-        source: '/:path*',
-        destination: 'https://restcountries.com/:path*'
-      }
-    ]
   }
 }
 
