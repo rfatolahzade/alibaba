@@ -13,8 +13,8 @@ const Countries = ({ serverList }) => {
   })
   const router = useRouter()
 
-  const [list, onChangeList] = useState( [])
-  const [filterList, onChangeFilterList] = useState([])
+  const [list, onChangeList] = useState( serverList)
+  const [filterList, onChangeFilterList] = useState(serverList)
   const getCountries = useCallback(() => {
     getCountriesService().then(res => onChangeList(res))
   }, [router.asPath])
@@ -72,7 +72,7 @@ const Countries = ({ serverList }) => {
 
   return (
     <StyledCountries className={'d-grid'}>
-      {(filterList.length === 0 && serverList.length === 0)
+      {filterList.length === 0
         ? [...Array(12).keys()].map(item => (
             <Skeleton
               height={390}
@@ -80,7 +80,7 @@ const Countries = ({ serverList }) => {
               key={item}
             />
           ))
-        : (filterList.length === 0 ? serverList : filterList).map(listItem => (
+        : filterList.map(listItem => (
             <CardCountry
               key={listItem.name}
               data={listItem}
