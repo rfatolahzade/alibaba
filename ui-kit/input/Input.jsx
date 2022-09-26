@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import PropTypes from 'prop-types'
 import Icon from '../icons/Icon'
 import styled from 'styled-components'
-import { breakpointsPX } from '../../helper/consts'
+import { breakpointsPX } from 'helper/consts'
 
 const Input = ({ icon, placeholder, handleChange, name, value }) => {
   const [stateValue, onChangeStateValue] = useState(value)
@@ -20,7 +20,7 @@ const Input = ({ icon, placeholder, handleChange, name, value }) => {
 
   return (
     <StyledInput
-      className='py-1 d-flex border-radius-4 px-2'
+      className='py-1 d-flex border-radius-4 box-shadow px-2'
       onClick={onFocus}>
       {icon && (
         <Icon
@@ -81,20 +81,11 @@ const StyledInput = styled.div`
     font-weight: var(--font-weight-300);
   }
 
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--blue-dark);
-    color: var(--white);
-    input::placeholder {
-      color: var(--white);
-    }
-  }
+  transition: background-color 0.4s;
+  background-color: var(--color-background-secondary);
+  color: var(--color-primary);
 
-  @media (prefers-color-scheme: light) {
-    background-color: var(--white);
-    box-shadow: var(--shadow);
-    color: var(--dark-900);
-    input::placeholder {
-      color: var(--dark-900);
-    }
+  input::placeholder {
+    color: var(--color-primary);
   }
 `

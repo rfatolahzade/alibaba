@@ -58,14 +58,7 @@ Button.propTypes = {
 const StyledButton = styled.button`
   border: none;
   outline: none;
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--blue-dark);
-    color: var(--white);
-  }
-
-  @media (prefers-color-scheme: light) {
-    background-color: var(--white);
-    box-shadow: var(--shadow);
-    color: var(--dark-900);
-  }
+  transition: background-color 0.4s;
+  background-color: var(--color-background-secondary);
+  color: var(--color-primary);
 `

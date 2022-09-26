@@ -21,7 +21,7 @@ const SelectBox = ({ label, list, selected, handleChange, name, classes }) => {
 
   return (
     <StyledSelectBox
-      className={`py-1 px-2  d-flex flex-column font-weight-300 border-radius-4  position-relative ${classes}`}
+      className={`py-1 px-2 box-shadow d-flex flex-column font-weight-300 border-radius-4  position-relative ${classes}`}
       ref={ref}>
       <div
         onClick={handleOpen}
@@ -36,7 +36,7 @@ const SelectBox = ({ label, list, selected, handleChange, name, classes }) => {
       </div>
       {
         <ul
-          className={`select-box-list ${
+          className={`select-box-list box-shadow ${
             isOpen ? 'select-box-list__open' : ''
           } position-absolute border-radius-4 right-0 left-0 w-100 mt-h bottom-0`}>
           {list.map(listItem => (
@@ -74,6 +74,10 @@ SelectBox.propTypes = {
 export default SelectBox
 
 const StyledSelectBox = styled.div`
+  transition: background-color 0.4s;
+  background-color: var(--color-background-secondary);
+  color: var(--color-primary);
+
   .select-box--label {
     width: 150px;
   }
@@ -83,17 +87,6 @@ const StyledSelectBox = styled.div`
     &.select-box--icon__up {
       transform: rotate(180deg);
     }
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--blue-dark);
-    color: var(--white);
-  }
-
-  @media (prefers-color-scheme: light) {
-    background-color: var(--white);
-    box-shadow: var(--shadow);
-    color: var(--dark-900);
   }
 
   .select-box-list {
@@ -107,15 +100,8 @@ const StyledSelectBox = styled.div`
       padding: 10px 0;
       height: fit-content;
     }
-    @media (prefers-color-scheme: dark) {
-      background-color: var(--blue-dark);
-      color: var(--white);
-    }
-
-    @media (prefers-color-scheme: light) {
-      background-color: var(--white);
-      box-shadow: var(--shadow);
-      color: var(--dark-900);
-    }
+    transition: background-color 0.4s;
+    background-color: var(--color-background-secondary);
+    color: var(--color-primary);
   }
 `

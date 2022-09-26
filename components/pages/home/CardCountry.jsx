@@ -26,7 +26,7 @@ const schemaCard = [
 ]
 
 const CardCountry = ({ data }) => (
-  <StyledCardCountry className='border-radius-4 d-flex flex-column'>
+  <StyledCardCountry className='border-radius-4 box-shadow d-flex flex-column'>
     <Link href={`/country/${data.alpha3Code.toLowerCase()}`}>
       <a href={`/country/${data.alpha3Code.toLowerCase()}`}>
         <Image
@@ -69,6 +69,9 @@ export default CardCountry
 const StyledCardCountry = styled.article`
   text-align: center;
   overflow: hidden;
+  transition: background-color 0.4s;
+  background-color: var(--color-background-secondary);
+  color: var(--color-primary);
 
   .card-country--image {
     width: 100%;
@@ -76,16 +79,5 @@ const StyledCardCountry = styled.article`
     object-fit: contain;
     aspect-ratio: 4/3;
     border-radius: 4px 4px 0 0;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    background-color: var(--blue-dark);
-    color: var(--white);
-  }
-
-  @media (prefers-color-scheme: light) {
-    background-color: var(--white);
-    box-shadow: var(--shadow);
-    color: var(--dark-900);
   }
 `

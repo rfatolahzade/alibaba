@@ -1,6 +1,9 @@
 export default Object.freeze({
   header: {
     title: 'Where in the world?',
+    dark: 'dark',
+    light: 'light',
+    mode: 'mode',
   },
   home: {
     top_bar: {
