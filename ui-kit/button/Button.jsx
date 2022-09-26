@@ -18,7 +18,7 @@ const MainButton = ({ icon, title }) => (
 
 const Button = ({ title, icon, href, size, classes }) => (
   <StyledButton
-    className={`box-shadow border-radius-4 cursor-pointer font-weight-300 text-capitalize ${
+    className={`box-shadow border-radius-4 cursor-pointer text-14 font-weight-300 text-capitalize ${
       size === 'small' ? 'py-1 px-3' : 'py-1 px-4'
     }  ${classes}`}>
     {href ? (

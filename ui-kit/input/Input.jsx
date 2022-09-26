@@ -31,6 +31,7 @@ const Input = ({ icon, placeholder, handleChange, name, value }) => {
       <input
         autoComplete='off'
         ref={refInput}
+        className='text-14'
         placeholder={placeholder}
         name={name}
         value={stateValue}
