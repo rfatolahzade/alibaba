@@ -19,6 +19,8 @@ const Countries = ({ serverList }) => {
     getCountriesService().then(res => onChangeList(res))
   }, [router.asPath])
 
+  console.log('serverList',serverList)
+
   useEffect(() => {
     if (serverList.length === 0) {
       getCountries()
