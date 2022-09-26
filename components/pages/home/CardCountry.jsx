@@ -1,8 +1,8 @@
-import {memo}                  from 'react'
-import styled                  from 'styled-components'
-import Link                    from 'next/link'
-import Image                   from 'next/image'
-import ui                      from 'dictionaries/ui'
+import { memo } from 'react'
+import styled from 'styled-components'
+import Link from 'next/link'
+import Image from 'next/image'
+import ui from 'dictionaries/ui'
 import { commaSeparateNumber } from 'helper/helper'
 
 const schemaCard = [
@@ -31,7 +31,7 @@ const CardCountry = ({ data }) => (
     <Link href={`/country/${data.alpha3Code.toLowerCase()}`}>
       <a href={`/country/${data.alpha3Code.toLowerCase()}`}>
         <Image
-          className='card-country--image'
+          className='card-country--image w-100 h-100'
           alt={data.name}
           width={404}
           height={303}
@@ -65,10 +65,10 @@ const CardCountry = ({ data }) => (
   </StyledCardCountry>
 )
 
-const areEqual = (prevProps, nextProps) => JSON.stringify(prevProps.data) ===
-  JSON.stringify(nextProps.data)
+const areEqual = (prevProps, nextProps) =>
+  JSON.stringify(prevProps.data) === JSON.stringify(nextProps.data)
 
-export default memo(CardCountry,areEqual)
+export default memo(CardCountry, areEqual)
 
 const StyledCardCountry = styled.article`
   text-align: center;
@@ -78,9 +78,7 @@ const StyledCardCountry = styled.article`
   color: var(--color-primary);
 
   .card-country--image {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     aspect-ratio: 4/3;
     border-radius: 4px 4px 0 0;
   }

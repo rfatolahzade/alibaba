@@ -6,6 +6,7 @@ export default Object.freeze({
     mode: 'mode',
   },
   home: {
+    title: 'list countries',
     top_bar: {
       search: 'Search for a country...',
       filter_region: 'Filter by region',

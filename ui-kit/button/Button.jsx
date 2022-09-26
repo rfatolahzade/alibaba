@@ -1,10 +1,10 @@
-import React, {memo} from 'react'
-import styled        from 'styled-components'
-import PropTypes     from 'prop-types'
-import Icon          from '../icons/Icon'
-import Link          from 'next/link'
+import React, { memo } from 'react'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import Icon from '../icons/Icon'
+import Link from 'next/link'
 
-const MainButton = ({icon, title}) => (
+const MainButton = ({ icon, title }) => (
   <div className='d-flex items-center'>
     {icon && (
       <Icon
@@ -16,7 +16,7 @@ const MainButton = ({icon, title}) => (
   </div>
 )
 
-const Button = ({title, icon, href, size, classes}) => (
+const Button = ({ title, icon, href, size, classes }) => (
   <StyledButton
     className={`box-shadow border-radius-4 cursor-pointer text-14 font-weight-300 text-capitalize ${
       size === 'small' ? 'py-1 px-3' : 'py-1 px-4'
@@ -31,16 +31,15 @@ const Button = ({title, icon, href, size, classes}) => (
         </a>
       </Link>
     ) : (
-       <MainButton
-         icon={icon}
-         title={title}
-       />
-     )}
+      <MainButton
+        icon={icon}
+        title={title}
+      />
+    )}
   </StyledButton>
 )
 
-const areEqual = (prevProps, nextProps) => prevProps.title ===
-  nextProps.title
+const areEqual = (prevProps, nextProps) => prevProps.title === nextProps.title
 
 export default memo(Button, areEqual)
 
@@ -48,14 +47,14 @@ Button.defaultProps = {
   title: '',
   icon: '',
   href: '',
-  classes: ''
+  classes: '',
 }
 
 Button.propTypes = {
   title: PropTypes.string.isRequired,
   icon: PropTypes.string,
   href: PropTypes.string,
-  classes: PropTypes.string.isRequired
+  classes: PropTypes.string.isRequired,
 }
 
 const StyledButton = styled.button`

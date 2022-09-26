@@ -1,16 +1,20 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import Icon from 'ui-kit/icons/Icon'
 import ui from 'dictionaries/ui'
 import styled from 'styled-components'
 
 const Header = () => {
   const [isDarkTheme, onToggleIsDarkTheme] = useState(undefined)
-  const handleToggle = () => {
+  const handleToggle = useCallback(() => {
     onToggleIsDarkTheme(!isDarkTheme)
-  }
-  const storeUserSetPreference = pref => {
-    typeof window !== 'undefined' && localStorage.setItem('theme', pref)
-  }
+  }, [isDarkTheme])
+  const storeUserSetPreference = useCallback(
+    pref => {
+      typeof window !== 'undefined' && localStorage.setItem('theme', pref)
+    },
+    [typeof window !== 'undefined' && window],
+  )
+
   const root = typeof window !== 'undefined' && document.documentElement
   useEffect(() => {
     const initialColorValue = root.style.getPropertyValue(

@@ -1,10 +1,10 @@
-import styled                                from 'styled-components'
-import PropTypes                             from 'prop-types'
-import Icon                                  from '../icons/Icon'
-import {memo, useCallback, useRef, useState} from 'react'
-import {useOnClickOutside}                   from 'helper/helper'
+import styled from 'styled-components'
+import PropTypes from 'prop-types'
+import Icon from '../icons/Icon'
+import { memo, useCallback, useRef, useState } from 'react'
+import { useOnClickOutside } from 'helper/helper'
 
-const SelectBox = ({label, list, selected, handleChange, name, classes}) => {
+const SelectBox = ({ label, list, selected, handleChange, name, classes }) => {
   const [isOpen, onToggleIsOpen] = useState()
   const ref = useRef()
 
@@ -15,7 +15,7 @@ const SelectBox = ({label, list, selected, handleChange, name, classes}) => {
   }, [isOpen])
 
   const handleSelect = useCallback(selected => {
-    handleChange({value: selected, name})
+    handleChange({ value: selected, name })
     onToggleIsOpen(false)
   }, [])
 
@@ -59,7 +59,7 @@ SelectBox.defaultProps = {
   selected: '',
   handleChange: () => {},
   list: '',
-  classes: ''
+  classes: '',
 }
 
 SelectBox.propTypes = {
@@ -68,11 +68,11 @@ SelectBox.propTypes = {
   selected: PropTypes.string.isRequired || PropTypes.number.isRequired,
   list: PropTypes.array.isRequired,
   handleChange: PropTypes.func.isRequired,
-  classes: PropTypes.string
+  classes: PropTypes.string,
 }
 
-const areEqual = (prevProps, nextProps) => prevProps.selected === nextProps.selected &&
-  prevProps.list === nextProps.list
+const areEqual = (prevProps, nextProps) =>
+  prevProps.selected === nextProps.selected && prevProps.list === nextProps.list
 
 export default memo(SelectBox, areEqual)
 

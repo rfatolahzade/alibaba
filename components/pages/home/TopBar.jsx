@@ -1,10 +1,10 @@
-import {memo, useCallback, useEffect, useState} from 'react'
-import Input                                    from 'ui-kit/input/Input'
-import ui                                       from 'dictionaries/ui'
-import SelectBox                                from 'ui-kit/select-box/SelectBox'
-import styled                                   from 'styled-components'
-import {breakpointsPX}                          from 'helper/consts'
-import {useRouter, withRouter}                  from 'next/router'
+import { memo, useCallback, useEffect, useState } from 'react'
+import Input from 'ui-kit/input/Input'
+import ui from 'dictionaries/ui'
+import SelectBox from 'ui-kit/select-box/SelectBox'
+import styled from 'styled-components'
+import { breakpointsPX } from 'helper/consts'
+import { useRouter, withRouter } from 'next/router'
 
 const Regions = ['africa', 'america', 'asia', 'europe', 'oceania']
 
@@ -14,18 +14,18 @@ const TopBar = () => {
   const updateUrl = useCallback(() => {
     router.push(
       {
-        query: queryParams
+        query: queryParams,
       },
       undefined,
-      {shallow: false}
+      { shallow: false },
     )
   }, [queryParams])
 
   const handleChange = useCallback(
     e => {
-      onChangeQueryParams(prevState => ({...prevState, [e.name]: e.value}))
+      onChangeQueryParams(prevState => ({ ...prevState, [e.name]: e.value }))
     },
-    [queryParams]
+    [queryParams],
   )
 
   useEffect(() => {
@@ -60,7 +60,8 @@ const TopBar = () => {
     </StyledTopBar>
   )
 }
-const areEqual = (prevProps, nextProps) => JSON.stringify(prevProps.router?.query) ===
+const areEqual = (prevProps, nextProps) =>
+  JSON.stringify(prevProps.router?.query) ===
   JSON.stringify(nextProps.router?.query)
 
 export default memo(withRouter(TopBar), areEqual)

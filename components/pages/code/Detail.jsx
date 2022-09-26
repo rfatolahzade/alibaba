@@ -1,45 +1,45 @@
-import {memo, useCallback, useEffect, useState} from 'react'
-import {getCountryService}                      from 'api/services/country'
-import styled                                   from 'styled-components'
-import Button                                   from 'ui-kit/button/Button'
-import ui                                       from 'dictionaries/ui'
-import Image                                    from 'next/image'
-import Head                                     from 'next/head'
-import {commaSeparateNumber}                    from 'helper/helper'
-import {breakpointsPX}                          from 'helper/consts'
-import Skeleton                                 from 'ui-kit/skeleton/Skeleton'
+import { memo, useCallback, useEffect, useState } from 'react'
+import { getCountryService } from 'api/services/country'
+import styled from 'styled-components'
+import Button from 'ui-kit/button/Button'
+import ui from 'dictionaries/ui'
+import Image from 'next/image'
+import Head from 'next/head'
+import { commaSeparateNumber } from 'helper/helper'
+import { breakpointsPX } from 'helper/consts'
+import Skeleton from 'ui-kit/skeleton/Skeleton'
 
 const schemaDetailLeft = [
   {
     key: 'native_name',
     title: ui.detail.summary.native_name,
     type: 'string',
-    key_server: 'nativeName'
+    key_server: 'nativeName',
   },
   {
     key: 'population',
     title: ui.detail.summary.population,
     type: 'number',
-    key_server: 'population'
+    key_server: 'population',
   },
   {
     key: 'region',
     title: ui.detail.summary.region,
     type: 'string',
-    key_server: 'region'
+    key_server: 'region',
   },
   {
     key: 'subregion',
     title: ui.detail.summary.sub_region,
     type: 'string',
-    key_server: 'subregion'
+    key_server: 'subregion',
   },
   {
     key: 'capital',
     title: ui.detail.summary.capital,
     type: 'string',
-    key_server: 'capital'
-  }
+    key_server: 'capital',
+  },
 ]
 
 const schemaDetailRight = [
@@ -47,28 +47,27 @@ const schemaDetailRight = [
     key: 'top_level_down',
     title: ui.detail.summary.top_level_down,
     type: 'list',
-    key_server: 'topLevelDomain'
+    key_server: 'topLevelDomain',
   },
   {
     key: 'currencies',
     title: ui.detail.summary.currencies,
     type: 'list',
-    key_server: 'currencies_code'
+    key_server: 'currencies_code',
   },
   {
     key: 'languages',
     title: ui.detail.summary.languages,
     type: 'string',
-    key_server: 'languages_name'
-  }
+    key_server: 'languages_name',
+  },
 ]
 
-const Detail = ({query_server}) => {
+const Detail = ({ query_server }) => {
   const [data, onChangeData] = useState('')
 
   const getData = useCallback(() => {
-    getCountryService(query_server.code)
-      .then(res => onChangeData(res))
+    getCountryService(query_server.code).then(res => onChangeData(res))
   }, [query_server?.code])
 
   useEffect(() => {
@@ -91,9 +90,8 @@ const Detail = ({query_server}) => {
           />
         </nav>
 
-        <detail className={'detail'}>
-          {
-            data ?
+        <detail className={'detail d-grid'}>
+          {data ? (
             <>
               <div className={'detail--image'}>
                 {data.flag && (
@@ -110,7 +108,7 @@ const Detail = ({query_server}) => {
 
               <summary className={'detail--summary my-4'}>
                 <h1 className='text-21 mb-3 font-weight-800'>{data.name}</h1>
-                <div className='detail--summary--list'>
+                <div className='detail--summary--list d-grid'>
                   <ul>
                     {schemaDetailLeft.map(schemaDetailLeftItem => (
                       <RowDetail
@@ -131,7 +129,7 @@ const Detail = ({query_server}) => {
                   </ul>
                 </div>
                 {data?.borders && (
-                  <div className='detail--summary--borders'>
+                  <div className='detail--summary--borders d-grid'>
                     <h6 className='text-16 font-weight-600 text-capitalize mt-1 detail--summary--borders--title'>
                       {ui.detail.summary.border_countries}:
                     </h6>
@@ -149,56 +147,73 @@ const Detail = ({query_server}) => {
                 )}
               </summary>
             </>
-                 :
+          ) : (
             <>
-              <Skeleton width={600} height={447}/>
+              <Skeleton
+                width={600}
+                height={447}
+              />
               <summary className={'detail--summary my-4'}>
-                <Skeleton width={100} height={30}/>
+                <Skeleton
+                  width={100}
+                  height={30}
+                />
                 <div className='detail--summary--list'>
                   <ul>
-                    {schemaDetailLeft.map(schemaDetailLeftItem => <Skeleton key={schemaDetailLeftItem.key}
-                                                                            className='my-q' width={200} height={30}/>
-                    )}
+                    {schemaDetailLeft.map(schemaDetailLeftItem => (
+                      <Skeleton
+                        key={schemaDetailLeftItem.key}
+                        className='my-q'
+                        width={200}
+                        height={30}
+                      />
+                    ))}
                   </ul>
                   <ul>
                     {schemaDetailRight.map(schemaDetailRightItem => (
-                      <Skeleton key={schemaDetailRightItem.key} className='my-q' width={200} height={30}/>
+                      <Skeleton
+                        key={schemaDetailRightItem.key}
+                        className='my-q'
+                        width={200}
+                        height={30}
+                      />
                     ))}
                   </ul>
                 </div>
                 {
                   <div className='detail--summary--borders'>
                     <div className='detail--summary--borders--list'>
-                      {[
-                        ...Array(3)
-                          .keys()
-                      ].map(arrayItem => (
-                        <Skeleton key={arrayItem} className='m-q' width={120} height={30}/>
+                      {[...Array(3).keys()].map(arrayItem => (
+                        <Skeleton
+                          key={arrayItem}
+                          className='m-q'
+                          width={120}
+                          height={30}
+                        />
                       ))}
                     </div>
                   </div>
                 }
               </summary>
             </>
-          }
-
+          )}
         </detail>
       </StyleDetail>
     </>
   )
 }
 
-const RowDetail = ({schemaDetailItem, data}) => (
+const RowDetail = ({ schemaDetailItem, data }) => (
   <li className='mb-1 detail--summary--list--item'>
     <h6 className='text-16 font-weight-600 text-capitalize'>
       {schemaDetailItem.title}:{' '}
       <span className='font-weight-300'>
         {data[schemaDetailItem.key_server] &&
-        (schemaDetailItem.type === 'number'
-         ? commaSeparateNumber(data[schemaDetailItem.key_server])
-         : schemaDetailItem.type === 'list'
-           ? data[schemaDetailItem.key_server].join(',')
-           : data[schemaDetailItem.key_server])}
+          (schemaDetailItem.type === 'number'
+            ? commaSeparateNumber(data[schemaDetailItem.key_server])
+            : schemaDetailItem.type === 'list'
+            ? data[schemaDetailItem.key_server].join(',')
+            : data[schemaDetailItem.key_server])}
       </span>
     </h6>
   </li>
@@ -207,7 +222,7 @@ const RowDetail = ({schemaDetailItem, data}) => (
 const areEqual = (prevProps, nextProps) =>
   JSON.stringify(prevProps.data) === JSON.stringify(nextProps.data) &&
   JSON.stringify(prevProps.schemaDetailItem) ===
-  JSON.stringify(nextProps.schemaDetailItem)
+    JSON.stringify(nextProps.schemaDetailItem)
 
 memo(RowDetail, areEqual)
 
@@ -218,7 +233,6 @@ const StyleDetail = styled.section`
 
   .detail {
     margin-top: 5rem;
-    display: grid;
     column-gap: 7.5rem;
     grid-template-columns: repeat(2, 1fr);
 
@@ -231,14 +245,12 @@ const StyleDetail = styled.section`
 
     .detail--summary {
       .detail--summary--list {
-        display: grid;
         column-gap: 1.5rem;
         grid-template-columns: repeat(2, 1fr);
       }
 
       .detail--summary--borders {
         margin-top: 5rem;
-        display: grid;
         grid-template-columns: repeat(12, 1fr);
 
         .detail--summary--borders--title {
