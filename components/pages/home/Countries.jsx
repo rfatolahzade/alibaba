@@ -47,15 +47,15 @@ const Countries = ({ serverList }) => {
         ? list.filter(listItem => {
             if (region && search) {
               return (
-                listItem.name.toLowerCase().includes(search.toLowerCase()) &&
-                listItem.region.toLowerCase().includes(region.toLowerCase())
+                listItem.name?.toLowerCase().includes(search?.toLowerCase()) &&
+                listItem.region?.toLowerCase().includes(region?.toLowerCase())
               )
             } else if (search) {
-              return listItem.name.toLowerCase().includes(search.toLowerCase())
+              return listItem.name?.toLowerCase().includes(search?.toLowerCase())
             } else {
               return listItem.region
                 .toLowerCase()
-                .includes(region.toLowerCase())
+                .includes(region?.toLowerCase())
             }
           })
         : list
