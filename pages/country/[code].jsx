@@ -6,7 +6,7 @@ const Code = props => <Detail {...props} />
 
 export default Code
 
-export async function getStaticProps(context) {
+export async function getServerSideProps(context) {
   if (isClientSideNavigate(context))
     return {
       props: {
