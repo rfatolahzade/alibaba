@@ -3,6 +3,6 @@ export default {
     _get: 'all',
   },
   country: {
-    _get: 'alpha/',
+    _get: 'alpha',
   },
 }
