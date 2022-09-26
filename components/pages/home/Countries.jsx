@@ -1,9 +1,10 @@
 import { useCallback, useEffect, useState } from 'react'
-import { getCountriesService } from 'api/services/country'
-import styled from 'styled-components'
-import { breakpointsPX } from 'helper/consts'
-import { useRouter } from 'next/router'
-import Skeleton from 'ui-kit/skeleton/Skeleton'
+import { getCountriesService }              from 'api/services/country'
+import styled                               from 'styled-components'
+import { breakpointsPX }                    from 'helper/consts'
+import { useRouter }                        from 'next/router'
+import Skeleton                             from 'ui-kit/skeleton/Skeleton'
+import CardCountry                          from './CardCountry'
 
 const Countries = ({ serverList }) => {
   const [queryParams, onChangeQueryParams] = useState({
@@ -12,7 +13,7 @@ const Countries = ({ serverList }) => {
   })
   const router = useRouter()
 
-  const [list, onChangeList] = useState(serverList)
+  const [list, onChangeList] = useState(serverList || [])
   const [filterList, onChangeFilterList] = useState([])
   const getCountries = useCallback(() => {
     getCountriesService().then(res => onChangeList(res))
@@ -67,7 +68,7 @@ const Countries = ({ serverList }) => {
 
   return (
     <StyledCountries className={'d-grid'}>
-      {(list.length === 0 || serverList.length === 0)
+      {(filterList.length === 0 || serverList.length === 0)
         ? [...Array(10).keys()].map(item => (
             <Skeleton
               height={390}
