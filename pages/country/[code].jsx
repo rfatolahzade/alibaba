@@ -1,6 +1,5 @@
 import {getCountryService}    from 'api/services/country'
 import Detail                 from 'components/pages/code/Detail'
-import {isClientSideNavigate} from 'helper/helper'
 
 const Code = props => <Detail {...props} />
 

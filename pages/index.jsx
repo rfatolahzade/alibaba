@@ -1,5 +1,4 @@
 import Home                   from 'components/pages/home/Home'
-import {isClientSideNavigate} from 'helper/helper'
 import {getCountriesService}  from 'api/services/country'
 
 export default function Index (props) {
